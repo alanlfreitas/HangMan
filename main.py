@@ -16,18 +16,17 @@ lives = 6
 print(logo)
 
 #Testing the code
-print(f'The random word is: {chosen_word}.')
+#print(f'The random word is: {chosen_word}.')
 
 #Create the list with blanks
 display = []
 for _ in range(word_length):
-  display += '_'
-
+  display += "_"
 
 #Adding a loop until user to complete the word.
 while not end_game:
   guess = input("Guess a letter: ").lower()
-
+  clear()
   #Returning if the letter was given before
   if guess in display:
     print(f"You've already {guess} right!")
@@ -43,9 +42,12 @@ while not end_game:
     if lives == 0:
       end_game = True
       print("You lose.")
-  print(display)
-  print(stages[lives])
+      print(f"The word was: {chosen_word}")
+  #joining all elements in the list and turning it into a string
+  print(f"{''.join(display)}")
+  
+  #Checking if the user got all the letters
   if "_" not in display:
     end_game = True
     print("You win.")
-print(stages[lives])
+  print(stages[lives])
